@@ -185,6 +185,16 @@ func printMenu(tamagochi: Tamagochi){
                 select = opt2
             }
         }while(select < 1 || select > 3)
+        switch select{
+        case 1:
+            
+        case 2:
+            
+        case 3:
+            
+        default:
+            print("Invalid Option")
+        }
     }while(true)
     
 }
