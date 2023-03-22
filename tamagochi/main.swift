@@ -639,6 +639,10 @@ func matchingGame(tamagochi:Tamagochi) {
     }else{
         tamagochi.hunger -= 3
     }
+    var x1 = 0
+    var y1 = 0
+    var x2 = 0
+    var y2 = 0
     var boardFound: [[Bool]] = [[Bool]](repeating: [Bool](repeating: false, count: 4), count: 4)
     var cards: [String] = ["🐶", "🐶", "🐱", "🐱", "🦄", "🦄", "🦊", "🦊", "🐼", "🐼", "🐹", "🐹", "🐯", "🐯", "🐷", "🐷"]
     var board: [[String]] = [[String]](repeating: [String](repeating: "", count: 4), count: 4)
@@ -665,15 +669,37 @@ func matchingGame(tamagochi:Tamagochi) {
     
     while !win {
         print("")
-        print("Send the coordinates for the first card:", terminator: " ")
-        var strInput = readLine() ?? ""
-        let x1: Int = Int(strInput.split(separator: " ")[0]) ?? 0
-        let y1: Int = Int(strInput.split(separator: " ")[1]) ?? 0
-        print("Send the coordinates for the second card:", terminator: " ")
-        strInput = readLine() ?? ""
-        let x2: Int = Int(strInput.split(separator: " ")[0]) ?? 0
-        let y2: Int = Int(strInput.split(separator: " ")[1]) ?? 0
-        
+        print("Coordinate X for the First Card")
+        var getX1 = String(Character(UnicodeScalar(Int(getch()))!))
+        if let opt = Int(getX1){
+            x1 = opt
+        }
+        print("")
+        print("Coordinate Y for the First Card")
+        var getY1 = String(Character(UnicodeScalar(Int(getch()))!))
+        if let opt = Int(getY1){
+            y1 = opt
+        }
+        print("")
+        print("Coordinate X for the Second Card")
+        var getX2 = String(Character(UnicodeScalar(Int(getch()))!))
+        if let opt = Int(getX2){
+            x2 = opt
+        }
+        print("")
+        print("Coordinate Y for the Second Card")
+        var getY2 = String(Character(UnicodeScalar(Int(getch()))!))
+        if let opt = Int(getY2){
+            y2 = opt
+        }
+//        print("Send the coordinates for the first card:", terminator: " ")
+//        var strInput = readLine() ?? ""
+//        let x1: Int = Int(strInput.split(separator: " ")[0]) ?? 0
+//        let y1: Int = Int(strInput.split(separator: " ")[1]) ?? 0
+//        print("Send the coordinates for the second card:", terminator: " ")
+//        strInput = readLine() ?? ""
+//        let x2: Int = Int(strInput.split(separator: " ")[0]) ?? 0
+//        let y2: Int = Int(strInput.split(separator: " ")[1]) ?? 0
         clear()
         
         printBoard(x1: x1, y1: y1, x2: x2, y2: y2, board: board, boardFound: boardFound)
