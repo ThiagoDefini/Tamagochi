@@ -554,7 +554,17 @@ func createType() -> AnimalType {
     return ttype
 }
 
-func matchingGame() {
+func matchingGame(tamagochi:Tamagochi) {
+    if(tamagochi.happiness >= 8){
+        tamagochi.happiness = 10
+    }else{
+        tamagochi.happiness += 2
+    }
+    if(tamagochi.hunger <= 2){
+        tamagochi.hunger = 0
+    }else{
+        tamagochi.hunger -= 2
+    }
     var cards: [String] = ["🐶", "🐶", "🐱", "🐱", "🦄", "🦄", "🦊", "🦊", "🐼", "🐼", "🐹", "🐹", "🐯", "🐯", "🐷", "🐷"]
     var board: [[String]] = [[String]](repeating: [String](repeating: "", count: 4), count: 4)
     var win: Bool = false
@@ -571,7 +581,7 @@ func matchingGame() {
     
     printBoard(board: board)
     
-    print("Welcome to matching game")
+    print("Welcome to matching game 🎮")
     print("   0  1  2  3")
     print("0  🂡  🂡  🂡  🂡")
     print("1  🂡  🂡  🂡  🂡")
@@ -579,22 +589,18 @@ func matchingGame() {
     print("3  🂡  🂡  🂡  🂡")
     
     while !win {
-        print("Envie duas coordenadas:", terminator: " ")
-        let strInput = readLine() ?? ""
+        print("Send the coordinates for the first card:", terminator: " ")
+        var strInput = readLine() ?? ""
         let x1: Int = Int(strInput.split(separator: " ")[0]) ?? 0
         let y1: Int = Int(strInput.split(separator: " ")[1]) ?? 0
-        let x2: Int = Int(strInput.split(separator: " ")[2]) ?? 0
-        let y2: Int = Int(strInput.split(separator: " ")[3]) ?? 0
+        print("Send the coordinates for the second card:", terminator: " ")
+        strInput = readLine() ?? ""
+        let x2: Int = Int(strInput.split(separator: " ")[0]) ?? 0
+        let y2: Int = Int(strInput.split(separator: " ")[1]) ?? 0
         
         clear()
         
         printBoard(x1: x1, y1: y1, x2: x2, y2: y2, board: board)
-        
-        if (x1 == 3) {
-            win = true
-            clear()
-            print(strWon)
-        }
         
         if board[x1][y1] == board[x2][y2] {
             cartasAcertadas += 1
@@ -604,6 +610,7 @@ func matchingGame() {
             if win {
                 clear()
                 print(strWon)
+                Thread.sleep(forTimeInterval: 1.5)
             } else {
                 print("Você acertou!!")
             }
