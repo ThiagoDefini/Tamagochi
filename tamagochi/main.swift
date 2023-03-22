@@ -7,6 +7,16 @@
 
 import Foundation
 
+let strWon = #"""
+__   __            _    _                   __
+\ \ / /           | |  | |               _  \ \
+ \ V /___  _   _  | |  | | ___  _ __    (_)  | |
+  \ // _ \| | | | | |/\| |/ _ \| '_ \        | |
+  | | (_) | |_| | \  /\  / (_) | | | |   _   | |
+  \_/\___/ \__,_|  \/  \/ \___/|_| |_|  (_)  | |
+                                            /_/
+"""#
+
 let cat = """
         ██          ██
         █▒█        █▒█
@@ -311,7 +321,7 @@ class Tamagochi{
     var hunger: Int
     var happiness: Int
     var hygiene: Int
-
+    
     init(name: String, type: AnimalType){
         self.name = name
         self.type = type
@@ -345,6 +355,88 @@ func createType() -> AnimalType {
     }
     let ttype = AnimalType(type: numType)
     return ttype
+}
+
+func matchingGame() {
+    var cards: [String] = ["🐶", "🐶", "🐱", "🐱", "🦄", "🦄", "🦊", "🦊", "🐼", "🐼", "🐹", "🐹", "🐯", "🐯", "🐷", "🐷"]
+    var board: [[String]] = [[String]](repeating: [String](repeating: "", count: 4), count: 4)
+    var win: Bool = false
+    var cartasAcertadas: Int = 0
+    
+    cards.shuffle()
+    
+    for i in 0..<board.count {
+        for j in 0..<board[i].count {
+            board[i][j] = cards[0]
+            cards.remove(at: 0)
+        }
+    }
+    
+    printBoard(board: board)
+    
+    print("Welcome to matching game")
+    print("   0  1  2  3")
+    print("0  🂡  🂡  🂡  🂡")
+    print("1  🂡  🂡  🂡  🂡")
+    print("2  🂡  🂡  🂡  🂡")
+    print("3  🂡  🂡  🂡  🂡")
+    
+    while !win {
+        print("Envie duas coordenadas:", terminator: " ")
+        let strInput = readLine() ?? ""
+        let x1: Int = Int(strInput.split(separator: " ")[0]) ?? 0
+        let y1: Int = Int(strInput.split(separator: " ")[1]) ?? 0
+        let x2: Int = Int(strInput.split(separator: " ")[2]) ?? 0
+        let y2: Int = Int(strInput.split(separator: " ")[3]) ?? 0
+        
+        clear()
+        
+        printBoard(x1: x1, y1: y1, x2: x2, y2: y2, board: board)
+        
+        if (x1 == 3) {
+            win = true
+            clear()
+            print(strWon)
+        }
+        
+        if board[x1][y1] == board[x2][y2] {
+            cartasAcertadas += 1
+            if cartasAcertadas == (board[0].count) {
+                win = true
+            }
+            if win {
+                clear()
+                print(strWon)
+            } else {
+                print("Você acertou!!")
+            }
+        }
+    }
+}
+
+func printBoard(x1: Int, y1: Int, x2: Int, y2: Int,  board: [[String]]) {
+    print("   0  1  2  3")
+    for i in 0..<board.count {
+        print("\(i)", terminator: " ")
+        for j in 0..<board[i].count {
+            if i == x1 && j == y1 ||  i == x2 && j == y2 {
+                print(board[i][j], terminator: " ")
+            } else {
+                print(" 🂡", terminator: " ")
+            }
+        }
+        print("")
+    }
+    print("")
+}
+
+func printBoard(board: [[String]]) {
+    for i in 0..<board.count {
+        for j in 0..<board[i].count {
+            print(board[i][j], terminator: " ")
+        }
+        print("")
+    }
 }
 
 func eatCat(){
@@ -440,6 +532,7 @@ func eat(tamagochi: Tamagochi){
         eatSnail()
     case .Elephant:
         eatElephant()
+    }
 }
 
 func bathCat(){
@@ -452,7 +545,7 @@ func bathCat(){
     print("")
     Thread.sleep(forTimeInterval: 1)
     clear()
-//    print(bathEat2)
+    //    print(bathEat2)
     print("")
     print("")
     print("")
@@ -460,7 +553,7 @@ func bathCat(){
     print("")
     Thread.sleep(forTimeInterval: 1)
     clear()
-//    print(bathEat3)
+    //    print(bathEat3)
     print("")
     print("")
     print("")
@@ -535,7 +628,7 @@ func printMenu(tamagochi: Tamagochi){
         case 1:
             eat(tamagochi: tamagochi)
         case 2:
-            print("")
+            matchingGame()
         case 3:
             print("")
         default:
@@ -559,9 +652,6 @@ var type = createType()
 var tamagochi: Tamagochi = Tamagochi(name: name, type: type)
 
 printMenu(tamagochi: tamagochi)
-
-
-
 
 //class Main: Thread{
 //    override func start() {
