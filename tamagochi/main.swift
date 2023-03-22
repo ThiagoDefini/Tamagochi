@@ -432,8 +432,8 @@ let elephantEat3 = """
              ██▓██   ██▓▓██
 """
 
-let elephantBath = """
-           █
+let elephantBath1 = """
+   💧      💧      💧     💧
           █
          █
         █    ███████
@@ -449,6 +449,81 @@ let elephantBath = """
               █▓▓▓█   █▓▓▓█
              ██▓██   ██▓▓██
 """
+
+let elephantBath2 = """
+   💧      💧      💧     💧
+          █
+         █
+        █    ███████
+   💧  ██  💧█▓▓███💧██   💧
+      ██   █▓▓▓▓▓▓▓█▓████
+      ██  ██▓▓▓(◐)▓█▓█▓█
+      ███▓▓▓█▓▓▓▓▓█▓█▓▓▓▓█
+      ▀██▓▓█ ██▓▓▓▓██▓▓▓▓▓█
+       ▀██▀  █▓▓▓▓▓▓▓▓▓▓▓▓▓█
+              █▓▓▓▓▓█▓▓▓▓▓▓█
+              █▓▓▓▓█▓█▓▓▓▓▓█
+              █▓▓▓█▓▓▓█▓▓▓▓█
+              █▓▓▓█   █▓▓▓█
+             ██▓██   ██▓▓██
+"""
+
+let elephantBath3 = """
+   💧      💧      💧     💧
+          █
+         █
+        █    ███████
+   💧  ██  💧█▓▓███💧██   💧
+      ██   █▓▓▓▓▓▓▓█▓████
+      ██  ██▓▓▓(◐)▓█▓█▓█
+      ███▓▓▓█▓▓▓▓▓█▓█▓▓▓▓█
+      ▀██▓▓█ ██▓▓▓▓██▓▓▓▓▓█
+   💧  ▀██▀💧█▓▓▓▓▓💧▓▓▓▓▓💧
+              █▓▓▓▓▓█▓▓▓▓▓▓█
+              █▓▓▓▓█▓█▓▓▓▓▓█
+              █▓▓▓█▓▓▓█▓▓▓▓█
+              █▓▓▓█   █▓▓▓█
+             ██▓██   ██▓▓██
+"""
+
+let elephantBath4 = """
+   💧      💧      💧     💧
+          █
+         █
+        █    ███████
+   💧  ██  💧█▓▓███💧██   💧
+      ██   █▓▓▓▓▓▓▓█▓████
+      ██  ██▓▓▓(◐)▓█▓█▓█
+      ███▓▓▓█▓▓▓▓▓█▓█▓▓▓▓█
+      ▀██▓▓█ ██▓▓▓▓██▓▓▓▓▓█
+   💧  ▀██▀💧█▓▓▓▓▓💧▓▓▓▓▓💧
+              █▓▓▓▓▓█▓▓▓▓▓▓█
+              █▓▓▓▓█▓█▓▓▓▓▓█
+              █▓▓▓█▓▓▓█▓▓▓▓█
+              █▓▓▓█   █▓▓▓█
+   💧      💧██▓██ 💧██▓▓█💧
+"""
+
+
+
+let rip = """
+            -|-
+             |
+         .-'~~~`-.
+       .'         `.
+       |  R  I  P  |
+       |           |
+       |           |
+       |           |
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""
+
+func alive(tamagochi: Tamagochi) -> Bool{
+    if(tamagochi.hunger == 0 || tamagochi.happiness == 0 || tamagochi.hygiene == 0){
+        return false
+    }
+    return true
+}
 
 extension FileHandle {
     func enableRawMode() -> termios {
@@ -478,18 +553,17 @@ func getch() -> UInt8 {
 
 
 func printStatus(status:Int){
-    print("[", terminator: "")
     for _ in 1...status{
-        print("|", terminator: "")
+        print("🟩", terminator: "")
     }
     for _ in status..<10{
-        print(" ", terminator: "")
+        print("⬛️", terminator: "")
     }
-    print("] \(status*10)%")
+    print(" \(status*10)%")
 }
 
 func clear(){
-    for i in 0...40{
+    for _ in 0...40{
         print("")
     }
 }
@@ -555,16 +629,17 @@ func createType() -> AnimalType {
 }
 
 func matchingGame(tamagochi:Tamagochi) {
-    if(tamagochi.happiness >= 8){
+    if(tamagochi.happiness >= 7){
         tamagochi.happiness = 10
     }else{
-        tamagochi.happiness += 2
+        tamagochi.happiness += 3
     }
-    if(tamagochi.hunger <= 2){
+    if(tamagochi.hunger <= 3){
         tamagochi.hunger = 0
     }else{
-        tamagochi.hunger -= 2
+        tamagochi.hunger -= 3
     }
+    var boardFound: [[Bool]] = [[Bool]](repeating: [Bool](repeating: false, count: 4), count: 4)
     var cards: [String] = ["🐶", "🐶", "🐱", "🐱", "🦄", "🦄", "🦊", "🦊", "🐼", "🐼", "🐹", "🐹", "🐯", "🐯", "🐷", "🐷"]
     var board: [[String]] = [[String]](repeating: [String](repeating: "", count: 4), count: 4)
     var win: Bool = false
@@ -579,9 +654,9 @@ func matchingGame(tamagochi:Tamagochi) {
         }
     }
     
-    printBoard(board: board)
-    
+    clear()
     print("Welcome to matching game 🎮")
+    print("")
     print("   0  1  2  3")
     print("0  🂡  🂡  🂡  🂡")
     print("1  🂡  🂡  🂡  🂡")
@@ -589,6 +664,7 @@ func matchingGame(tamagochi:Tamagochi) {
     print("3  🂡  🂡  🂡  🂡")
     
     while !win {
+        print("")
         print("Send the coordinates for the first card:", terminator: " ")
         var strInput = readLine() ?? ""
         let x1: Int = Int(strInput.split(separator: " ")[0]) ?? 0
@@ -600,14 +676,19 @@ func matchingGame(tamagochi:Tamagochi) {
         
         clear()
         
-        printBoard(x1: x1, y1: y1, x2: x2, y2: y2, board: board)
+        printBoard(x1: x1, y1: y1, x2: x2, y2: y2, board: board, boardFound: boardFound)
         
         if board[x1][y1] == board[x2][y2] {
             cartasAcertadas += 1
+            boardFound[x1][y1] = true
+            boardFound[x2][y2] = true
             if cartasAcertadas == (board[0].count) {
                 win = true
             }
             if win {
+                clear()
+                printBoard(x1: x1, y1: y1, x2: x2, y2: y2, board: board, boardFound: boardFound)
+                Thread.sleep(forTimeInterval: 2)
                 clear()
                 print(strWon)
                 Thread.sleep(forTimeInterval: 1.5)
@@ -618,14 +699,16 @@ func matchingGame(tamagochi:Tamagochi) {
     }
 }
 
-func printBoard(x1: Int, y1: Int, x2: Int, y2: Int,  board: [[String]]) {
+func printBoard(x1: Int, y1: Int, x2: Int, y2: Int,  board: [[String]], boardFound: [[Bool]]) {
     print("   0  1  2  3")
     for i in 0..<board.count {
         print("\(i)", terminator: " ")
         for j in 0..<board[i].count {
             if i == x1 && j == y1 ||  i == x2 && j == y2 {
                 print(board[i][j], terminator: " ")
-            } else {
+            } else if boardFound[i][j] == true{
+                print(board[i][j], terminator: " ")
+            }else {
                 print(" 🂡", terminator: " ")
             }
         }
@@ -642,6 +725,96 @@ func printBoard(board: [[String]]) {
         print("")
     }
 }
+
+//func matchingGame(tamagochi:Tamagochi) {
+//    if(tamagochi.happiness >= 8){
+//        tamagochi.happiness = 10
+//    }else{
+//        tamagochi.happiness += 2
+//    }
+//    if(tamagochi.hunger <= 2){
+//        tamagochi.hunger = 0
+//    }else{
+//        tamagochi.hunger -= 2
+//    }
+//    var cards: [String] = ["🐶", "🐶", "🐱", "🐱", "🦄", "🦄", "🦊", "🦊", "🐼", "🐼", "🐹", "🐹", "🐯", "🐯", "🐷", "🐷"]
+//    var board: [[String]] = [[String]](repeating: [String](repeating: "", count: 4), count: 4)
+//    var win: Bool = false
+//    var cartasAcertadas: Int = 0
+//
+//    cards.shuffle()
+//
+//    for i in 0..<board.count {
+//        for j in 0..<board[i].count {
+//            board[i][j] = cards[0]
+//            cards.remove(at: 0)
+//        }
+//    }
+//
+//    clear()
+//    print("Welcome to matching game 🎮")
+//    print("")
+//    print("   0  1  2  3")
+//    print("0  🂡  🂡  🂡  🂡")
+//    print("1  🂡  🂡  🂡  🂡")
+//    print("2  🂡  🂡  🂡  🂡")
+//    print("3  🂡  🂡  🂡  🂡")
+//
+//    while !win {
+//        print("")
+//        print("Send the coordinates for the first card:", terminator: " ")
+//        var strInput = readLine() ?? ""
+//        let x1: Int = Int(strInput.split(separator: " ")[0]) ?? 0
+//        let y1: Int = Int(strInput.split(separator: " ")[1]) ?? 0
+//        print("Send the coordinates for the second card:", terminator: " ")
+//        strInput = readLine() ?? ""
+//        let x2: Int = Int(strInput.split(separator: " ")[0]) ?? 0
+//        let y2: Int = Int(strInput.split(separator: " ")[1]) ?? 0
+//
+//        clear()
+//
+//        printBoard(x1: x1, y1: y1, x2: x2, y2: y2, board: board)
+//
+//        if board[x1][y1] == board[x2][y2] {
+//            cartasAcertadas += 1
+//            if cartasAcertadas == (board[0].count) {
+//                win = true
+//            }
+//            if win {
+//                clear()
+//                print(strWon)
+//                Thread.sleep(forTimeInterval: 1.5)
+//            } else {
+//                print("Você acertou!!")
+//            }
+//        }
+//    }
+//}
+//
+//func printBoard(x1: Int, y1: Int, x2: Int, y2: Int,  board: [[String]]) {
+//    print("   0  1  2  3")
+//    for i in 0..<board.count {
+//        print("\(i)", terminator: " ")
+//        for j in 0..<board[i].count {
+//            if i == x1 && j == y1 ||  i == x2 && j == y2 {
+//                print(board[i][j], terminator: " ")
+//            } else {
+//                print(" 🂡", terminator: " ")
+//            }
+//        }
+//        print("")
+//    }
+//    print("")
+//}
+//
+//func printBoard(board: [[String]]) {
+//    for i in 0..<board.count {
+//        for j in 0..<board[i].count {
+//            print(board[i][j], terminator: " ")
+//        }
+//        print("")
+//    }
+//}
 
 func eatCat(){
     clear()
@@ -825,7 +998,38 @@ func bathSnail(){
 }
 
 func bathElephant(){
-    
+    clear()
+    print(elephantBath1)
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    Thread.sleep(forTimeInterval: 1)
+    clear()
+    print(elephantBath2)
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    Thread.sleep(forTimeInterval: 1)
+    clear()
+    print(elephantBath3)
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    Thread.sleep(forTimeInterval: 1)
+    clear()
+    print(elephantBath4)
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    Thread.sleep(forTimeInterval: 2)
 }
 
 func bath(tamagochi: Tamagochi){
@@ -895,13 +1099,50 @@ func printMenu(tamagochi: Tamagochi){
         case 1:
             eat(tamagochi: tamagochi)
         case 2:
-            matchingGame()
+            matchingGame(tamagochi: tamagochi)
         case 3:
             bath(tamagochi: tamagochi)
         default:
             print("Invalid Option")
         }
-    }while(select != 0)
+    }while(alive(tamagochi: tamagochi))
+    
+    clear()
+    
+    print("       Cause of Death")
+    print("")
+    if tamagochi.hunger == 0{
+        print("Hunger    ", terminator: "")
+        for _ in 0..<10{
+            print("⬛️", terminator: "")
+        }
+    }else{
+        print("")
+    }
+    if tamagochi.happiness == 0{
+        print("Happiness ", terminator: "")
+        for _ in 0..<10{
+            print("⬛️", terminator: "")
+        }
+    }else{
+        print("")
+    }
+    if tamagochi.hygiene == 0{
+        print("Hygiene   ", terminator: "")
+        for _ in 0..<10{
+            print("⬛️", terminator: "")
+        }
+    }else{
+        print("")
+    }
+    print("")
+    print("")
+    print(rip)
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
     
 }
 
@@ -920,34 +1161,3 @@ var tamagochi: Tamagochi = Tamagochi(name: name, type: type)
 
 printMenu(tamagochi: tamagochi)
 
-//class Main: Thread{
-//    override func start() {
-//        super.start()
-//    }
-//
-//    override func main() {
-//        var i: Int = 0
-//        repeat{
-//            clear()
-//            print("🐰")
-//            print("Hunger: \(tamagochi.hunger)")
-//            print("Happiness: \(tamagochi.happiness)")
-//            print("Cleanliness: \(tamagochi.cleanliness)")
-//
-//            print("1-Comer  2-Jogar  3-Banho")
-//            i+=1
-//        }while(i != 10)
-//    }
-//}
-//
-//class Input: Thread{
-//    override func start() {
-//        super.start()
-//    }
-//    override func main() {
-//        readLine()
-//    }
-//}
-//
-//let menu = Main()
-//menu.start()
