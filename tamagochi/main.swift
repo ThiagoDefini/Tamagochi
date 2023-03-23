@@ -629,20 +629,17 @@ func createType() -> AnimalType {
 }
 
 func matchingGame(tamagochi:Tamagochi) {
-    if(tamagochi.happiness >= 7){
+    if(tamagochi.happiness >= 6){
         tamagochi.happiness = 10
     }else{
-        tamagochi.happiness += 3
+        tamagochi.happiness += 4
     }
     if(tamagochi.hunger <= 3){
         tamagochi.hunger = 0
     }else{
         tamagochi.hunger -= 3
     }
-    var x1 = 0
-    var y1 = 0
-    var x2 = 0
-    var y2 = 0
+    var x1 = 0, x2 = 0, y1 = 0, y2 = 0
     var boardFound: [[Bool]] = [[Bool]](repeating: [Bool](repeating: false, count: 4), count: 4)
     var cards: [String] = ["🐶", "🐶", "🐱", "🐱", "🦄", "🦄", "🦊", "🦊", "🐼", "🐼", "🐹", "🐹", "🐯", "🐯", "🐷", "🐷"]
     var board: [[String]] = [[String]](repeating: [String](repeating: "", count: 4), count: 4)
@@ -657,7 +654,6 @@ func matchingGame(tamagochi:Tamagochi) {
             cards.remove(at: 0)
         }
     }
-    
     clear()
     print("Welcome to matching game 🎮")
     print("")
@@ -670,36 +666,28 @@ func matchingGame(tamagochi:Tamagochi) {
     while !win {
         print("")
         print("Coordinate X for the First Card")
-        var getX1 = String(Character(UnicodeScalar(Int(getch()))!))
+        let getX1 = String(Character(UnicodeScalar(Int(getch()))!))
         if let opt = Int(getX1){
             x1 = opt
         }
         print("")
         print("Coordinate Y for the First Card")
-        var getY1 = String(Character(UnicodeScalar(Int(getch()))!))
+        let getY1 = String(Character(UnicodeScalar(Int(getch()))!))
         if let opt = Int(getY1){
             y1 = opt
         }
         print("")
         print("Coordinate X for the Second Card")
-        var getX2 = String(Character(UnicodeScalar(Int(getch()))!))
+        let getX2 = String(Character(UnicodeScalar(Int(getch()))!))
         if let opt = Int(getX2){
             x2 = opt
         }
         print("")
         print("Coordinate Y for the Second Card")
-        var getY2 = String(Character(UnicodeScalar(Int(getch()))!))
+        let getY2 = String(Character(UnicodeScalar(Int(getch()))!))
         if let opt = Int(getY2){
             y2 = opt
         }
-//        print("Send the coordinates for the first card:", terminator: " ")
-//        var strInput = readLine() ?? ""
-//        let x1: Int = Int(strInput.split(separator: " ")[0]) ?? 0
-//        let y1: Int = Int(strInput.split(separator: " ")[1]) ?? 0
-//        print("Send the coordinates for the second card:", terminator: " ")
-//        strInput = readLine() ?? ""
-//        let x2: Int = Int(strInput.split(separator: " ")[0]) ?? 0
-//        let y2: Int = Int(strInput.split(separator: " ")[1]) ?? 0
         clear()
         
         printBoard(x1: x1, y1: y1, x2: x2, y2: y2, board: board, boardFound: boardFound)
@@ -751,96 +739,6 @@ func printBoard(board: [[String]]) {
         print("")
     }
 }
-
-//func matchingGame(tamagochi:Tamagochi) {
-//    if(tamagochi.happiness >= 8){
-//        tamagochi.happiness = 10
-//    }else{
-//        tamagochi.happiness += 2
-//    }
-//    if(tamagochi.hunger <= 2){
-//        tamagochi.hunger = 0
-//    }else{
-//        tamagochi.hunger -= 2
-//    }
-//    var cards: [String] = ["🐶", "🐶", "🐱", "🐱", "🦄", "🦄", "🦊", "🦊", "🐼", "🐼", "🐹", "🐹", "🐯", "🐯", "🐷", "🐷"]
-//    var board: [[String]] = [[String]](repeating: [String](repeating: "", count: 4), count: 4)
-//    var win: Bool = false
-//    var cartasAcertadas: Int = 0
-//
-//    cards.shuffle()
-//
-//    for i in 0..<board.count {
-//        for j in 0..<board[i].count {
-//            board[i][j] = cards[0]
-//            cards.remove(at: 0)
-//        }
-//    }
-//
-//    clear()
-//    print("Welcome to matching game 🎮")
-//    print("")
-//    print("   0  1  2  3")
-//    print("0  🂡  🂡  🂡  🂡")
-//    print("1  🂡  🂡  🂡  🂡")
-//    print("2  🂡  🂡  🂡  🂡")
-//    print("3  🂡  🂡  🂡  🂡")
-//
-//    while !win {
-//        print("")
-//        print("Send the coordinates for the first card:", terminator: " ")
-//        var strInput = readLine() ?? ""
-//        let x1: Int = Int(strInput.split(separator: " ")[0]) ?? 0
-//        let y1: Int = Int(strInput.split(separator: " ")[1]) ?? 0
-//        print("Send the coordinates for the second card:", terminator: " ")
-//        strInput = readLine() ?? ""
-//        let x2: Int = Int(strInput.split(separator: " ")[0]) ?? 0
-//        let y2: Int = Int(strInput.split(separator: " ")[1]) ?? 0
-//
-//        clear()
-//
-//        printBoard(x1: x1, y1: y1, x2: x2, y2: y2, board: board)
-//
-//        if board[x1][y1] == board[x2][y2] {
-//            cartasAcertadas += 1
-//            if cartasAcertadas == (board[0].count) {
-//                win = true
-//            }
-//            if win {
-//                clear()
-//                print(strWon)
-//                Thread.sleep(forTimeInterval: 1.5)
-//            } else {
-//                print("Você acertou!!")
-//            }
-//        }
-//    }
-//}
-//
-//func printBoard(x1: Int, y1: Int, x2: Int, y2: Int,  board: [[String]]) {
-//    print("   0  1  2  3")
-//    for i in 0..<board.count {
-//        print("\(i)", terminator: " ")
-//        for j in 0..<board[i].count {
-//            if i == x1 && j == y1 ||  i == x2 && j == y2 {
-//                print(board[i][j], terminator: " ")
-//            } else {
-//                print(" 🂡", terminator: " ")
-//            }
-//        }
-//        print("")
-//    }
-//    print("")
-//}
-//
-//func printBoard(board: [[String]]) {
-//    for i in 0..<board.count {
-//        for j in 0..<board[i].count {
-//            print(board[i][j], terminator: " ")
-//        }
-//        print("")
-//    }
-//}
 
 func eatCat(){
     clear()
@@ -1173,12 +1071,12 @@ func printMenu(tamagochi: Tamagochi){
 }
 
 clear()
-print("--------Tamagochi--------")
+print("----------Pougotchi----------")
 print("")
-print("  Create your Tamagochi")
+print("    Create your Pougotchi")
 print("")
-print("  Press Enter to Start")
-print("-------------------------")
+print("    Press Enter to Start")
+print("-----------------------------")
 readLine()
 
 var name = createName()
