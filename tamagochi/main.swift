@@ -668,7 +668,7 @@ func matchingGame(tamagochi:Tamagochi) {
     var win: Bool = false
     var cartasAcertadas: Int = 0
     
-//    cards.shuffle()
+    cards.shuffle()
     
     for i in 0..<board.count {
         for j in 0..<board[i].count {
@@ -1097,7 +1097,7 @@ func printMenu(tamagochi: Tamagochi){
     print("")
     print("")
     print("")
-    Thread.sleep(forTimeInterval: 8)
+    readLine()
     
 }
 
@@ -1110,7 +1110,7 @@ print("")
 print("    Press Enter to Start")
 print("-----------------------------")
 readLine()
-SoundManager.shared
+
 var name = createName()
 var type = createType()
 var tamagochi: Tamagochi = Tamagochi(name: name, type: type)
