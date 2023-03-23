@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import AVFAudio
+import AVFoundation
 
 let strWon = #"""
 __   __            _    _                   __
@@ -525,6 +527,39 @@ func alive(tamagochi: Tamagochi) -> Bool{
     return true
 }
 
+public class SoundManager {
+    
+    static var shared: SoundManager = SoundManager()
+    
+    var player: AVAudioPlayer?
+    var player2: AVAudioPlayer?
+    
+    func playSound(soundName: String) {
+        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else { return  }
+        do {
+            
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            player?.numberOfLoops = 100
+            guard let player = player else { return  }
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    func playSound2(soundName: String) {
+        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else { return  }
+        do {
+            
+            player2 = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            guard let player = player else { return  }
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+}
+//SoundManager.shared.playSound(soundName: nome)
+
 extension FileHandle {
     func enableRawMode() -> termios {
         var raw = termios()
@@ -646,7 +681,7 @@ func matchingGame(tamagochi:Tamagochi) {
     var win: Bool = false
     var cartasAcertadas: Int = 0
     
-    cards.shuffle()
+//    cards.shuffle()
     
     for i in 0..<board.count {
         for j in 0..<board[i].count {
@@ -775,7 +810,7 @@ func eatSnail(){
     print("")
     print("")
     print("")
-    Thread.sleep(forTimeInterval: 2)
+    Thread.sleep(forTimeInterval: 1)
     clear()
     print(snailEat2)
     print("")
@@ -783,7 +818,7 @@ func eatSnail(){
     print("")
     print("")
     print("")
-    Thread.sleep(forTimeInterval: 2)
+    Thread.sleep(forTimeInterval: 1)
     clear()
     print(snailEat3)
     print("")
@@ -833,6 +868,7 @@ func eat(tamagochi: Tamagochi){
     if(tamagochi.hygiene < 0){
         tamagochi.hygiene = 0
     }
+    SoundManager.shared.playSound(soundName: "Eating")
     switch tamagochi.type{
     case .Cat:
         eatCat()
@@ -841,6 +877,8 @@ func eat(tamagochi: Tamagochi){
     case .Elephant:
         eatElephant()
     }
+    SoundManager.shared.playSound(soundName: "Song")
+
 }
 
 func bathCat(){
@@ -958,8 +996,8 @@ func bathElephant(){
 
 func bath(tamagochi: Tamagochi){
     tamagochi.hygiene += 3
-    tamagochi.hunger -= 1
-    tamagochi.happiness -= 2
+    tamagochi.hunger -= 2
+    tamagochi.happiness -= 3
     if(tamagochi.hygiene > 10){
         tamagochi.hygiene = 10
     }
@@ -969,7 +1007,7 @@ func bath(tamagochi: Tamagochi){
     if(tamagochi.happiness < 0){
         tamagochi.happiness = 0
     }
-    
+    SoundManager.shared.playSound(soundName: "Shower")
     switch tamagochi.type{
     case .Cat:
         bathCat()
@@ -978,6 +1016,11 @@ func bath(tamagochi: Tamagochi){
     case .Elephant:
         bathElephant()
     }
+    SoundManager.shared.playSound(soundName: "Song")
+}
+
+func deathMusic(){
+    SoundManager.shared.playSound(soundName: "Morte")
 }
 
 func printMenu(tamagochi: Tamagochi){
@@ -1032,7 +1075,7 @@ func printMenu(tamagochi: Tamagochi){
     }while(alive(tamagochi: tamagochi))
     
     clear()
-    
+    SoundManager.shared.playSound(soundName: "Morte")
     print("       Cause of Death")
     print("")
     if tamagochi.hunger == 0{
@@ -1067,10 +1110,12 @@ func printMenu(tamagochi: Tamagochi){
     print("")
     print("")
     print("")
+    Thread.sleep(forTimeInterval: 8)
     
 }
 
 clear()
+SoundManager.shared.playSound(soundName: "Song")
 print("----------Pougotchi----------")
 print("")
 print("    Create your Pougotchi")
