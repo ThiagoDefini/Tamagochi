@@ -532,7 +532,6 @@ public class SoundManager {
     static var shared: SoundManager = SoundManager()
     
     var player: AVAudioPlayer?
-    var player2: AVAudioPlayer?
     
     func playSound(soundName: String) {
         guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else { return  }
@@ -546,19 +545,7 @@ public class SoundManager {
             print(error.localizedDescription)
         }
     }
-    func playSound2(soundName: String) {
-        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else { return  }
-        do {
-            
-            player2 = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-            guard let player = player else { return  }
-            player.play()
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
 }
-//SoundManager.shared.playSound(soundName: nome)
 
 extension FileHandle {
     func enableRawMode() -> termios {
@@ -1123,7 +1110,7 @@ print("")
 print("    Press Enter to Start")
 print("-----------------------------")
 readLine()
-
+SoundManager.shared
 var name = createName()
 var type = createType()
 var tamagochi: Tamagochi = Tamagochi(name: name, type: type)
