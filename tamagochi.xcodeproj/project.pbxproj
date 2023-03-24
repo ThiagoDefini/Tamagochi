@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7B26B9DA29C8FE5C007649B1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B26B9D929C8FE5C007649B1 /* main.swift */; };
-		7BFE101F29CCC6E40057DF62 /* Morte.mp3 in Headers */ = {isa = PBXBuildFile; fileRef = 7BFE101D29CCC6AB0057DF62 /* Morte.mp3 */; settings = {ATTRIBUTES = (Public, ); }; };
-		7BFE102029CCC6E70057DF62 /* Song.mp3 in Headers */ = {isa = PBXBuildFile; fileRef = 7BFE101C29CCC6AB0057DF62 /* Song.mp3 */; settings = {ATTRIBUTES = (Public, ); }; };
-		7BFE102229CCCC180057DF62 /* Shower.mp3 in Headers */ = {isa = PBXBuildFile; fileRef = 7BFE102129CCCC130057DF62 /* Shower.mp3 */; settings = {ATTRIBUTES = (Public, ); }; };
-		7BFE102429CCCF2D0057DF62 /* Eating.mp3 in Headers */ = {isa = PBXBuildFile; fileRef = 7BFE102329CCCF280057DF62 /* Eating.mp3 */; settings = {ATTRIBUTES = (Public, ); }; };
+		7BC541C429CE07A900E71D90 /* Eating.mp3 in Headers */ = {isa = PBXBuildFile; fileRef = 7BC541C229CE07A400E71D90 /* Eating.mp3 */; settings = {ATTRIBUTES = (Public, ); }; };
+		7BC541C529CE07AB00E71D90 /* Morte.mp3 in Headers */ = {isa = PBXBuildFile; fileRef = 7BC541C129CE07A400E71D90 /* Morte.mp3 */; settings = {ATTRIBUTES = (Public, ); }; };
+		7BC541C629CE07AE00E71D90 /* Shower.mp3 in Headers */ = {isa = PBXBuildFile; fileRef = 7BC541C029CE07A400E71D90 /* Shower.mp3 */; settings = {ATTRIBUTES = (Public, ); }; };
+		7BC541C729CE07B100E71D90 /* Song.mp3 in Headers */ = {isa = PBXBuildFile; fileRef = 7BC541C329CE07A400E71D90 /* Song.mp3 */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,10 +29,10 @@
 /* Begin PBXFileReference section */
 		7B26B9D629C8FE5C007649B1 /* tamagochi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tamagochi; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B26B9D929C8FE5C007649B1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		7BFE101C29CCC6AB0057DF62 /* Song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Song.mp3; path = ../../../../Downloads/Song.mp3; sourceTree = "<group>"; };
-		7BFE101D29CCC6AB0057DF62 /* Morte.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Morte.mp3; path = ../../../../Downloads/Morte.mp3; sourceTree = "<group>"; };
-		7BFE102129CCCC130057DF62 /* Shower.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Shower.mp3; path = ../../../../Downloads/Shower.mp3; sourceTree = "<group>"; };
-		7BFE102329CCCF280057DF62 /* Eating.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Eating.mp3; path = ../../../../Downloads/Eating.mp3; sourceTree = "<group>"; };
+		7BC541C029CE07A400E71D90 /* Shower.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Shower.mp3; path = ../../../../Downloads/Shower.mp3; sourceTree = "<group>"; };
+		7BC541C129CE07A400E71D90 /* Morte.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Morte.mp3; path = ../../../../Downloads/Morte.mp3; sourceTree = "<group>"; };
+		7BC541C229CE07A400E71D90 /* Eating.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Eating.mp3; path = ../../../../Downloads/Eating.mp3; sourceTree = "<group>"; };
+		7BC541C329CE07A400E71D90 /* Song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Song.mp3; path = ../../../../Downloads/Song.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				7B26B9D929C8FE5C007649B1 /* main.swift */,
-				7BFE101D29CCC6AB0057DF62 /* Morte.mp3 */,
-				7BFE101C29CCC6AB0057DF62 /* Song.mp3 */,
-				7BFE102129CCCC130057DF62 /* Shower.mp3 */,
-				7BFE102329CCCF280057DF62 /* Eating.mp3 */,
+				7BC541C229CE07A400E71D90 /* Eating.mp3 */,
+				7BC541C129CE07A400E71D90 /* Morte.mp3 */,
+				7BC541C029CE07A400E71D90 /* Shower.mp3 */,
+				7BC541C329CE07A400E71D90 /* Song.mp3 */,
 			);
 			path = tamagochi;
 			sourceTree = "<group>";
@@ -81,10 +81,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BFE101F29CCC6E40057DF62 /* Morte.mp3 in Headers */,
-				7BFE102029CCC6E70057DF62 /* Song.mp3 in Headers */,
-				7BFE102229CCCC180057DF62 /* Shower.mp3 in Headers */,
-				7BFE102429CCCF2D0057DF62 /* Eating.mp3 in Headers */,
+				7BC541C429CE07A900E71D90 /* Eating.mp3 in Headers */,
+				7BC541C729CE07B100E71D90 /* Song.mp3 in Headers */,
+				7BC541C529CE07AB00E71D90 /* Morte.mp3 in Headers */,
+				7BC541C629CE07AE00E71D90 /* Shower.mp3 in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

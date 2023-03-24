@@ -528,8 +528,9 @@ func alive(tamagochi: Tamagochi) -> Bool{
 }
 
 public class SoundManager {
-    
+
     static var shared: SoundManager = SoundManager()
+    
     
     var player: AVAudioPlayer?
     
@@ -668,7 +669,7 @@ func matchingGame(tamagochi:Tamagochi) {
     var win: Bool = false
     var cartasAcertadas: Int = 0
     
-    cards.shuffle()
+    //cards.shuffle()
     
     for i in 0..<board.count {
         for j in 0..<board[i].count {
@@ -692,11 +693,23 @@ func matchingGame(tamagochi:Tamagochi) {
         if let opt = Int(getX1){
             x1 = opt
         }
+        if x1 > 3 {
+            x1 = 3
+        }
+        if x1 < 0{
+            x1 = 0
+        }
         print("")
         print("Coordinate Y for the First Card")
         let getY1 = String(Character(UnicodeScalar(Int(getch()))!))
         if let opt = Int(getY1){
             y1 = opt
+        }
+        if y1 > 3 {
+            y1 = 3
+        }
+        if y1 < 0{
+            y1 = 0
         }
         print("")
         print("Coordinate X for the Second Card")
@@ -704,11 +717,23 @@ func matchingGame(tamagochi:Tamagochi) {
         if let opt = Int(getX2){
             x2 = opt
         }
+        if x2 > 3 {
+            x2 = 3
+        }
+        if x2 < 0{
+            x2 = 0
+        }
         print("")
         print("Coordinate Y for the Second Card")
         let getY2 = String(Character(UnicodeScalar(Int(getch()))!))
         if let opt = Int(getY2){
             y2 = opt
+        }
+        if y2 > 3 {
+            y2 = 3
+        }
+        if y2 < 0{
+            y2 = 0
         }
         clear()
         
