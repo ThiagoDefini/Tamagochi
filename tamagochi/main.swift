@@ -811,6 +811,7 @@ func eatCat(){
     print("")
     print("")
     print("")
+    
     Thread.sleep(forTimeInterval: 2)
 }
 
