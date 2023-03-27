@@ -805,6 +805,7 @@ func eatCat(){
     print("")
     Thread.sleep(forTimeInterval: 1)
     clear()
+    
     print(catEat3)
     print("")
     print("")
